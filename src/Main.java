@@ -8,7 +8,8 @@ import javax.security.auth.login.LoginException;
 
 public class Main {
     public static void main(String[] args) throws LoginException {
-        JDABuilder.createDefault("OTI5ODMwNDI2Njk5MjY0MTUx.YdtCEQ.j3o9E4e0R1VuFla-izOkyf30GRc")
+        System.out.println(System.getenv());
+        JDABuilder.createDefault(System.getenv().get("DISCORD_TOKEN"))
                 .setActivity(Activity.listening("to your commands."))
                 .setAutoReconnect(true)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
