@@ -13,7 +13,8 @@ public class Main {
                 .addCommand(new Info())
                 .addCommand(new Echo())
                 .addCommand(new Add())
-                .addCommand(new True());
+                .addCommand(new True())
+                .addCommand(new Mention());
 
         JDABuilder.createDefault(System.getenv().get("DISCORD_TOKEN"))
                 .setActivity(Activity.listening("to your commands."))
