@@ -3,6 +3,7 @@ package commands;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
 public class Context {
 
@@ -12,16 +13,16 @@ public class Context {
         this.event = messageReceivedEvent;
     }
 
-    public void respond(String content) {
-        getChannel().sendMessage(content).queue();
+    public MessageAction respond(String content) {
+        return getChannel().sendMessage(content);
     }
 
-    public void respond(MessageEmbed embed) {
-        getChannel().sendMessageEmbeds(embed).queue();
+    public MessageAction respond(MessageEmbed embed) {
+        return getChannel().sendMessageEmbeds(embed);
     }
 
-    public void respond(Message message) {
-        getChannel().sendMessage(message).queue();
+    public MessageAction respond(Message message) {
+        return getChannel().sendMessage(message);
     }
 
     public MessageReceivedEvent getEvent() {

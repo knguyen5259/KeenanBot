@@ -1,4 +1,6 @@
 import commands.CommandHandler;
+import commands.misc.Echo;
+import commands.misc.Info;
 import commands.misc.Ping;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -14,8 +16,10 @@ public class Main {
                 .setAutoReconnect(true)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .addEventListeners(
-                        new CommandHandler()
+                        new CommandHandler("!")
                                 .addCommand(new Ping())
+                                .addCommand(new Info())
+                                .addCommand(new Echo())
                 )
                 .build();
     }

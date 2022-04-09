@@ -1,16 +1,18 @@
 package commands;
 
+import java.util.HashMap;
+
 public abstract class Command {
 
     private final String name;
-    private final Argument[] arguments;
+    private HashMap<String, Argument> arguments;
 
     public Command(String name) {
         this.name = name;
         this.arguments = null;
     }
 
-    public Command(String name, Argument[] arguments) {
+    public Command(String name, HashMap<String, Argument> arguments) {
         this.name = name;
         this.arguments = arguments;
     }
@@ -19,9 +21,14 @@ public abstract class Command {
         return name;
     }
 
-    public Argument[] getArguments() {
+    public HashMap<String, Argument> getArguments() {
         return arguments;
     }
 
-    public abstract void execute(Context context);
+    public abstract void execute(Context context, HashMap<String, Object> arguments);
+
+    public void setArguments(HashMap<String, Argument> arguments) {
+        this.arguments = arguments;
+    }
+
 }
