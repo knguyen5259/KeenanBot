@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Ping extends Command {
 
     public Ping() {
-        super("ping");
+        super("ping", "ping", "A simple testing command.");
     }
 
     @Override

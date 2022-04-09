@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Info extends Command {
 
     public Info() {
-        super("info");
+        super("info", "info", "Provides information about the bot.");
     }
 
     @Override

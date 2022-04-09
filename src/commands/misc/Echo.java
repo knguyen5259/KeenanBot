@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Echo extends Command {
 
     public Echo() {
-        super("echo");
+        super("echo", "echo (word)", "Repeats a single word.");
         HashMap<String, Argument> arguments = new HashMap<String, Argument>();
         arguments.put("word", Argument.STRING);
         setArguments(arguments);

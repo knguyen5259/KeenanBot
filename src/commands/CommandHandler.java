@@ -41,13 +41,27 @@ public class CommandHandler extends ListenerAdapter {
                     HashMap<String, Object> args = new HashMap<String, Object>();
                     int counter = 1;
                     for (Entry<String, Argument> a : command.getArguments().entrySet()) {
-                        args.put(a.getKey(), arguments[counter]);
+                        if (a.getValue() == Argument.STRING)
+                            args.put(a.getKey(), arguments[counter]);
+                        else if (a.getValue() == Argument.INTEGER)
+                            try {
+                                args.put(a.getKey(), Integer.parseInt(arguments[counter]));
+                            } catch (Exception ignored) {
+                                event.getTextChannel().sendMessage("Failed to parse integer argument").queue();
+                                return;
+                            }
+                        else if (a.getValue() == Argument.BOOLEAN)
+                            try {
+                                args.put(a.getKey(), Boolean.parseBoolean(arguments[counter]));
+                            } catch (Exception ignored) {
+                                event.getTextChannel().sendMessage("Failed to parse boolean argument").queue();
+                                return;
+                            }
                         counter++;
                     }
                     command.execute(new Context(event), args);
                 }
             }
-
         }
     }
 
@@ -62,6 +76,14 @@ public class CommandHandler extends ListenerAdapter {
 
     public void setGuildOnly(boolean guildOnly) {
         this.guildOnly = guildOnly;
+    }
+
+    public ArrayList<Command> getCommands() {
+        return commands;
+    }
+
+    public String getPrefix() {
+        return prefix;
     }
 
 }
