@@ -1,5 +1,6 @@
 import commands.CommandHandler;
 import commands.misc.*;
+import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
@@ -14,9 +15,10 @@ public class Main {
                 .addCommand(new Echo())
                 .addCommand(new Add())
                 .addCommand(new True())
-                .addCommand(new Mention());
+                .addCommand(new Mention())
+                .addCommand(new Binary());
 
-        JDABuilder.createDefault(System.getenv().get("DISCORD_TOKEN"))
+        JDABuilder.createDefault(Dotenv.load().get("TOKEN"))
                 .setActivity(Activity.listening("to your commands."))
                 .setAutoReconnect(true)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
